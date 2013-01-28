@@ -801,6 +801,9 @@ class Common(object):
         self.HOSTS                = dict((k, tuple(v.split('|')) if v else tuple()) for k, v in self.CONFIG.items('hosts'))
 
         #random.shuffle(self.GAE_APPIDS)
+        self.FIRST_APPID = self.GAE_APPIDS[0]
+        self.NEED_SWITCH   = True
+        self.FIRST_SWITCH  = True
         self.GAE_FETCHSERVER = '%s://%s.appspot.com%s?' % (self.GOOGLE_MODE, self.GAE_APPIDS[0], self.GAE_PATH)
 
     def info(self):
@@ -1210,12 +1213,26 @@ class GAEProxyHandler(object):
                 common.GAE_FETCHSERVER = '%s://%s.appspot.com%s?' % (common.GOOGLE_MODE, common.GAE_APPIDS[0], common.GAE_PATH)
             # appid over qouta, switch to next appid
             if response.app_status == 503:
-                common.GAE_APPIDS.append(common.GAE_APPIDS.pop(0))
-                common.GAE_FETCHSERVER = '%s://%s.appspot.com%s?' % (common.GOOGLE_MODE, common.GAE_APPIDS[0], common.GAE_PATH)
-                http.dns[urlparse.urlparse(common.GAE_FETCHSERVER).netloc] = common.GOOGLE_HOSTS
-                logging.info('APPID Over Quota,Auto Switch to [%s]' % (common.GAE_APPIDS[0]))
-                self.handle_method_urlfetch()
-                return
+                if common.FIRST_SWITCH:
+                    common.FIRST_SWITCH = False
+                    common.GAE_APPIDS.append(common.GAE_APPIDS.pop(0))
+                    common.GAE_FETCHSERVER = '%s://%s.appspot.com%s?' % (common.GOOGLE_MODE, common.GAE_APPIDS[0], common.GAE_PATH)
+                    http.dns[urlparse.urlparse(common.GAE_FETCHSERVER).netloc] = common.GOOGLE_HOSTS
+                    logging.info('APPID Over Quota,Auto Switch to [%s]' % (common.GAE_APPIDS[0]))
+                    self.handle_method_urlfetch()
+                    return
+                if common.NEED_SWITCH:
+                    common.GAE_APPIDS.append(common.GAE_APPIDS.pop(0))
+                    if common.GAE_APPIDS[0] != common.FIRST_APPID:
+                        common.GAE_FETCHSERVER = '%s://%s.appspot.com%s?' % (common.GOOGLE_MODE, common.GAE_APPIDS[0], common.GAE_PATH)
+                        http.dns[urlparse.urlparse(common.GAE_FETCHSERVER).netloc] = common.GOOGLE_HOSTS
+                        logging.info('APPID Over Quota,Auto Switch to [%s]' % (common.GAE_APPIDS[0]))
+                        self.handle_method_urlfetch()
+                        return
+                    else :
+                        common.NEED_SWITCH = False    					
+                else :
+                    logging.error('All APPID Over Quota,Please Wait Some Time')
             # bad request, disable CRLF injection
             if response.app_status in (400, 405):
                 http.crlf = 0
@@ -1664,6 +1681,13 @@ def pre_start():
                         '360safe' : False, # http://s.weibo.com/weibo/goagent%2520360%2520%25E5%258D%25B8%25E8%25BD%25BD
                         'QQProtect' : True, # http://s.weibo.com/weibo/goagent%2520qqprotect
                     }
+        tasklist = os.popen('tasklist').read().lower()
+        for software, need_check in blacklist.items():
+            if need_check and software.lower() in tasklist:
+                lineno = [sys._getframe().f_lineno-1, sys._getframe().f_lineno+2]
+                error = u'某些安全软件(如 %s)可能和本软件存在冲突.\n可以删除proxy.py第%r行或者暂时退出安全软件来继续运行' % (software, lineno)
+                ctypes.windll.user32.MessageBoxW(None, error, u'建议', 0)
+                #sys.exit(0)
     if common.GAE_APPIDS[0] == 'goagent' and not common.CRLF_ENABLE:
         logging.critical('please edit %s to add your appid to [gae] !', __config__)
         sys.exit(-1)
