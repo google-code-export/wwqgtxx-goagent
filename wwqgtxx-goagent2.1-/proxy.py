@@ -1701,6 +1701,8 @@ def main():
     logging.basicConfig(level=logging.DEBUG if common.LISTEN_DEBUGINFO else logging.INFO, format='%(levelname)s - %(asctime)s %(message)s', datefmt='[%b %d %H:%M:%S]')
     CertUtil.check_ca()
     pre_start()
+    import check_google_ip
+    check_google_ip.main()
     sys.stdout.write(common.info())
 
     #logging.info('Enable aggressive create_ssl_connection to connect google_hk')
