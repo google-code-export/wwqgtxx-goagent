@@ -1,0 +1,2589 @@
+<!DOCTYPE html>
+<html style="cursor: auto ! important;"><head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link rel="icon" type="image/vnd.microsoft.icon" href="https://ssl.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ 
+ <link rel="canonical" href="http://code.google.com/p/goagent/wiki/InstallGuide">
+ 
+ <script async="" src="GoAgentInstallGuide_files/cbgapi.loaded_0"></script><script gapi_processed="true" src="GoAgentInstallGuide_files/plusone.js" async="" type="text/javascript"></script><script type="text/javascript">
+ 
+ 
+ 
+ 
+ var codesite_token = "b8_8FyoKr94io7gjr26igE7pGMg:1359340077675";
+ 
+ 
+ var CS_env = {"assetVersionPath":"https://ssl.gstatic.com/codesite/ph/16993219237270412160","projectHomeUrl":"/p/goagent","relativeBaseUrl":"","loggedInUserEmail":"wwqgtxx@gmail.com","profileUrl":"/u/wwqgtxx/","projectName":"goagent","token":"b8_8FyoKr94io7gjr26igE7pGMg:1359340077675","assetHostPath":"https://ssl.gstatic.com/codesite/ph","domainName":null};
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ _gaq.push(
+ ['projectTracker._setAccount', 'UA-24938240-1'],
+ ['projectTracker._trackPageview']);
+ 
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+ 
+ </script><script src="GoAgentInstallGuide_files/ga.js" async="" type="text/javascript"></script>
+ 
+ 
+ <title>InstallGuide - 
+ goagent -
+ 
+ 
+ a gae proxy forked from gappproxy/wallproxy - Google Project Hosting
+ </title>
+ <link type="text/css" rel="stylesheet" href="GoAgentInstallGuide_files/core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="GoAgentInstallGuide_files/ph_detail.css">
+ 
+ 
+ 
+ <link type="application/atom+xml" rel="alternate" href="https://code.google.com/feeds/p/goagent/gitchanges/basic?path=/InstallGuide.wiki&amp;repo=wiki">
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="https://ssl.gstatic.com/codesite/ph/16993219237270412160/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(https://ssl.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(https://ssl.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(https://ssl.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ 
+ 
+ #maincol {
+ padding-top: 0;
+ padding-bottom: 0;
+ }
+
+ 
+ </style>
+<style type="text/css">#smgm_bgdiv{ text-align: center;position:fixed;top:0px;left:0px;z-index:9991;width:100%;height:100%;background-color:black;opacity:0.7;display:block;visibility:visible;}</style><style type="text/css">#smgm_dialogbox { vertical-align:middle;left:40px;top:15px;border:3px solid #000 !important;text-align:center !important;background-color:#fff !important;color:#000 !important;font-family:arial,verdana !important;z-Index:9999;position:fixed;width:18%;height:50%;margin-left:auto;margin-right:auto;display:block;visibility:visible;}</style><style type="text/css">.smgm_buttons { color:#000 !important;font: 90% 'arial','trebuchet ms',helvetica,sans-serif !important;background-color:#B2CCFF !important;border:2px solid !important;border-color: #E0EBFF #000 #000 #E0EBFF !important;vertical-align: top !important;}</style><style type="text/css">.smgm_table { margin-bottom:10px !important;border:0px !important;border-collapse:collapse !important;margin-left:auto;margin-right:auto; }</style></head>
+<body class="t6">
+<script type="text/javascript">
+ window.___gcfg = {lang: 'en'};
+ (function() 
+ {var po = document.createElement("script");
+ po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+ var s = document.getElementsByTagName("script")[0];
+ s.parentNode.insertBefore(po, s);
+ })();
+</script>
+<div class="headbg">
+
+ <div id="gaia">
+ 
+
+ <span>
+ 
+ 
+ 
+ <a href="#" id="multilogin-dropdown" onclick="return false;"><u><b>wwqgtxx@gmail.com</b></u> <small>▼</small></a>
+ 
+ 
+ | <a href="https://code.google.com/u/wwqgtxx/" id="projects-dropdown" onclick="return false;"><u>My favorites</u> <small>▼</small></a>
+ | <a href="https://code.google.com/u/wwqgtxx/" onclick="_CS_click('/gb/ph/profile');" title="Profile, Updates, and Settings"><u>Profile</u></a>
+ | <a href="https://www.google.com/accounts/Logout?continue=https%3A%2F%2Fcode.google.com%2Fp%2Fgoagent%2Fwiki%2FInstallGuide" onclick="_CS_click('/gb/ph/signout');"><u>Sign out</u></a>
+ 
+ </span>
+
+ </div>
+
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+<!--[if lte IE 7]>
+<div style="text-align:center;">
+Your version of Internet Explorer is not supported. Try a browser that
+contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
+<a href="http://www.google.com/chrome">Google Chrome</a>, or
+<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+</div>
+<![endif]-->
+
+
+
+ <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" itemscope="" itemtype="http://schema.org/CreativeWork" cellpadding="0" cellspacing="0">
+ <tbody><tr style="height: 58px;">
+ 
+ 
+ 
+ <td id="plogo">
+ <link itemprop="url" href="https://code.google.com/p/goagent">
+ <a href="https://code.google.com/p/goagent/">
+ 
+ 
+ <img src="GoAgentInstallGuide_files/logo.png" alt="Logo" itemprop="image">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em">
+ 
+ <div id="pname">
+ <a href="https://code.google.com/p/goagent/"><span itemprop="name">goagent</span></a>
+ </div>
+ 
+ <div id="psum">
+ <a id="project_summary_link" href="https://code.google.com/p/goagent/"><span itemprop="description">a gae proxy forked from gappproxy/wallproxy</span></a>
+ 
+ </div>
+ 
+ 
+ </td>
+ <td style="white-space:nowrap;text-align:right; vertical-align:bottom;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" type="text">
+ 
+ <input name="projectsearch" value="Search projects" type="submit">
+ </form>
+ 
+ </td></tr>
+ </tbody></table>
+
+</div>
+
+ 
+<div id="mt" class="gtb"> 
+ <a href="https://code.google.com/p/goagent/" class="tab ">Project&nbsp;Home</a>
+ 
+ 
+ 
+ 
+ <a href="https://code.google.com/p/goagent/downloads/list" class="tab ">Downloads</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="https://code.google.com/p/goagent/w/list" class="tab active">Wiki</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="https://code.google.com/p/goagent/issues/list" class="tab ">Issues</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class="gtbc"></div>
+</div>
+<table class="st" border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
+ <tbody><tr>
+ 
+ 
+ 
+ <td class="subt">
+ <div class="issueDetail">
+<div class="isf">
+ 
+ <span class="inIssueList"> 
+ <span>Search</span>
+ <form action="/p/goagent/w/list" method="GET" style="display:inline">
+ <select id="can" name="can">
+ <option disabled="disabled">Search within:</option>
+ 
+ <option value="1">&nbsp;All wiki pages</option>
+ <option value="3">&nbsp;Featured pages</option>
+ <option value="2" selected="selected">&nbsp;Current pages</option>
+ 
+ 
+ <option value="5">&nbsp;My starred pages</option>
+ 
+ <option value="4">&nbsp;Deprecated pages</option>
+ 
+ </select>
+ <span>for</span>
+ <span id="qq"><input size="38" id="searchq" name="q" autocomplete="off" type="text"></span>
+ 
+ 
+ 
+ <input value="Search" type="submit">
+ </form>
+ </span>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td class="bevel-right" align="right" valign="top"></td>
+ </tr>
+</tbody></table>
+
+
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+<div id="maincol">
+
+ 
+
+
+
+
+
+
+
+ <style type="text/css">
+ .delcom { background: #e8e8e8 }
+ .commentcontent {
+ margin: 2em;
+ padding: 0px 10px;
+ width: 66em;
+ }
+ .artifactcomment {
+ border-top: 3px solid #c3d9ff;
+ }
+ #commentform {
+ border-top: 3px solid #c3d9ff;
+ }
+ </style>
+
+<div id="wikipage">
+<table>
+ <tbody><tr>
+ 
+ 
+ <td style="vertical-align:top; padding-left:5px">
+ 
+ <div id="wikiheader">
+ 
+ <img id="star_img" src="GoAgentInstallGuide_files/star_off.gif" style="cursor:pointer" onclick="_CS_toggleStar(this,
+ {'scope': 'wiki',
+ 'user': '_CURRENT_USER',
+ 'item': 'goagent:InstallGuide'
+ });" height="15" width="15">
+ 
+ <span style="font-size:120%;font-weight:bold">InstallGuide</span>
+ &nbsp;
+ <div> 
+ 
+ 
+ <br>
+ 
+ <a class="label" style="padding-top: 2px" href="https://code.google.com/p/goagent/w/list?q=label:GAE%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B" title="">GAE平台部署教程</a>, 
+ 
+ <a class="label" style="padding-top: 2px" href="https://code.google.com/p/goagent/w/list?q=label:Featured" title="Listed on project home page">Featured</a>
+ 
+ 
+ 
+ <div id="wikiauthor" style="float:right">
+ Updated <span title="Mon Jan 14 06:43:31 2013">
+ Jan 14, 2013</span>
+ 
+ by 
+
+ <a class="userlink" href="https://code.google.com/u/106781204990925295112/">yubinlov...@gmail.com</a>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ <div id="wikicontent">
+ <div class="vt" id="wikimaincol">
+ <h1><a name="goagent_GAE平台部署教程"></a>goagent GAE平台部署教程<a href="#goagent_GAE%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B" class="section_anchor"></a></h1><h2><a name="一、申请Google_App_Engine并创建appid"></a>一、申请Google App Engine并创建appid<a href="#%E4%B8%80%E3%80%81%E7%94%B3%E8%AF%B7Google_App_Engine%E5%B9%B6%E5%88%9B%E5%BB%BAappid" class="section_anchor"></a></h2><ol><li>申请注册一个Google App Engine账号<a href="https://appengine.google.com/" rel="nofollow">https://appengine.google.com</a>。没有Gmail账号先注册一个， 用你的Gmaill账号登录。<img src="GoAgentInstallGuide_files/85969-1556074799-8.jpg"> </li><li>登录之后，自动转向Application注册页面，如下图：<img src="GoAgentInstallGuide_files/85970-1556074799-8.jpg"> </li><li>接下来的页面，输入你的手机号码，需要注意的是，手机号码前面要+86 格式如：+86 13888888888。<img src="GoAgentInstallGuide_files/85971-1556074799-8.jpg">  </li><ul><li>然后等待收取手机短信，收到短信后（一串数字号码）填入下图表单，点send提交.（有的手机收不到信息，<a href="http://ishare.cn.ms/archives/2162" rel="nofollow">详细教程</a> 到<a href="https://appengine.google.com/waitlist/sms_issues" rel="nofollow">https://appengine.google.com/waitlist/sms_issues</a> 提交该情况，一个工作日就能收到谷歌提示Google App Engine成功开通）。<img src="GoAgentInstallGuide_files/85972-1556074799-8.jpg"> </li></ul><li>提交完成之后，GAE账号即被激活，然后就可以创建新的应用程序了。转入“My Applications”页面，点击“Create an Application”新建应用<img src="GoAgentInstallGuide_files/85973-1556074799-8.jpg"> </li><ul><li>一个Gmail账户最多可以创建十个GAE应用。这里我们只创建一个应用就可以了。进入下一步，填写新应用的必要信息，如下图：<img src="GoAgentInstallGuide_files/Vaan.png"> </li><li>在
+上图中第一处添加一个应用名称，如abc555验证一下是否可用，如果显示“Yes”那么abc555就是你的Appid（记住这个id），而
+abc555.appspot.com就是你的应用服务器地址了。第二个空可随便填，点击提交按钮，如果能看到下图这个页面，就说明你成功创建了一个新的
+应用,你也可以点击应用名称，进入控制面板进行管理。   <img src="GoAgentInstallGuide_files/85974-1556074799-8.jpg"> </li><li>如果你要建立多次appid，只需要从步骤4开始再弄一遍就行了。 </li></ul></ol><h2><a name="二、下载goagent并上传至Google_App_Engine"></a>二、下载goagent并上传至Google App Engine<a href="#%E4%BA%8C%E3%80%81%E4%B8%8B%E8%BD%BDgoagent%E5%B9%B6%E4%B8%8A%E4%BC%A0%E8%87%B3Google_App_Engine" class="section_anchor"></a></h2><ol><li>下载goagent并解压，<a href="https://code.google.com/p/goagent/" rel="nofollow">https://code.google.com/p/goagent/</a> </li><li>上传 </li><ul><li>Windows用户：双击server文件夹下的upload.bat，输入你上步创建的appid（若要同时上传多appid在appid之间用<font color="red">|</font>隔开）和你的Gmail帐号和密码(如果开启了两步验证，密码为16位的应用程序专用密码） </li><li>Linux/Mac用户上传方法：在server目录下执行 </li><pre class="prettyprint"><span class="pln">python uploader</span><span class="pun">.</span><span class="pln">zip</span></pre><blockquote><img src="GoAgentInstallGuide_files/32fw.jpg"> 
+</blockquote><ul><li>如遇到getaddrinfo failed，error10054等错误而不能上传，可以先运行goagent.exe(要先修改appid)并把IE代理设置为127.0.0.1：8087再运行uploader.bat </li><li>要使用IPv6上传或者上传遇到11004错误可以<a href="https://code.google.com/p/goagent/issues/detail?id=7856#c3" rel="nofollow">按照此贴进行修改</a>或者下载这个已经修改好的<a href="https://code.google.com/p/goagent/downloads/detail?name=uploader.zip&amp;can=2&amp;q=" rel="nofollow">uploader.zip</a>文件覆盖原uploader.zip文件 </li></ul><ul><li>上传成功就会看图下图界面<img src="GoAgentInstallGuide_files/rCB2.png"> </li></ul></ul><li>上传成功后把local\proxy.ini中的appid = goagent中的goagent 改成你已经上传的应用的appid (用windows的记事本也可以） </li><ul><li>多appid用|隔开，如：appid1|appid2|appid3 </li><pre class="prettyprint"><span class="pun">[</span><span class="pln">gae</span><span class="pun">]</span><span class="pln"><br>appid </span><span class="pun">=</span><span class="pln"> appid1</span><span class="pun">|</span><span class="pln">appid2</span><span class="pun">|</span><span class="pln">appid3</span></pre></ul></ol><h2><a name="三、运行客户端"></a>三、运行客户端<a href="#%E4%B8%89%E3%80%81%E8%BF%90%E8%A1%8C%E5%AE%A2%E6%88%B7%E7%AB%AF" class="section_anchor"></a></h2><ol><li>Windows用户运行local文件夹中的goagent.exe   ﹡Linux/Mac用户运行 proxy.py </li><ul><li>设置浏览器或其他需要代理的程序代理地址为127.0.0.1:8087 </li><li>注意：使用过程中要一直运行goagent.exe/proxy.py </li><li>代
+理地址127.0.0.1:8087；如需使用PAC，设置pac地址为http://127.0.0.1:8086/proxy.pac；也可以配合
+SwitchySharp/AutoProxy等浏览器扩展（SwitchySharp用户可从local文件夹中的
+SwitchyOptions.bak文件导入配置）<a href="http://zh.wikipedia.org/wiki/%E4%BB%A3%E7%90%86%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE" rel="nofollow">pac是什么？</a> </li></ul><li>导入证书 </li><ul><li>使
+用管理员身份运行goagent.exe会自动向系统导入IE/Chrome的证书，你也可以双击local文件夹中的CA.crt安装证
+书；Firefox需要单独导入证书，打开FireFox?-&gt;选项-&gt;高级-&gt;加密-&gt;查看证书-&gt;证书机构-&gt;
+导入证书, 选择local\ca.crt, 勾选所有项，导入。 </li></ul></ol><p>  ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎ </p><h2><a name="附：浏览器设置方法"></a>附：浏览器设置方法<a href="#%E9%99%84%EF%BC%9A%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95" class="section_anchor"></a></h2><ol><li><h3><a name="IE浏览器设置"></a>IE浏览器设置<a href="#IE%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BE%E7%BD%AE" class="section_anchor"></a></h3></li><blockquote>IE有两种方式，分别为全部使用goagent代理和是pac自动代理 
+工具》Internet选项》连接，局域网用户单击局域网设置，宽带用户选择宽带连接之后单击设置 
+</blockquote><ol><li>设置代理为127.0.0.1:8087，全部使用goagent代理（不建议） </li><blockquote><img src="GoAgentInstallGuide_files/qV9G.png"> 
+</blockquote><ul><li>不使用时要将IE恢复无代理状态 </li></ul><li>使用PAC自动代理 </li><blockquote><img src="GoAgentInstallGuide_files/9o7G.png"> 
+</blockquote></ol><li><h3><a name="谷歌chrome配合Proxy_扩展"></a>谷歌chrome配合Proxy  SwitchySharp扩展<a href="#%E8%B0%B7%E6%AD%8Cchrome%E9%85%8D%E5%90%88Proxy_%E6%89%A9%E5%B1%95" class="section_anchor"></a></h3></li><ol><li>安装扩展 </li><ul><li>打开扩展管理页chrome://chrome/extensions/ ，将local文件夹中的SwitchySharp-0.9-beta-<a href="https://code.google.com/p/goagent/source/detail?r=48">r48</a>.crx拖拽到该页面之后点击确定即可安装，扩展也可以从chrome应用商店获得<a href="https://chrome.google.com/webstore/detail/proxy-switchysharp/dpplabbmogkhghncfbfdeeokoefdjegm" rel="nofollow">https://chrome.google.com/webstore/detail/proxy-switchysharp/dpplabbmogkhghncfbfdeeokoefdjegm</a> </li></ul><li>导入设置 </li><ul><li>点击 Proxy  SwitchySharp图标》选项》倒入/导出》<img src="GoAgentInstallGuide_files/k5s5.png">  </li><li>浏览到SwitchyOptions.bak，点击确定导入设置 </li><li>更新自动切换规则（先运行goagent再更新规则） </li><ul><li>在扩展设置页点击“切换规则”，点击“立即更新列表”，最后点击“保存”。<img src="GoAgentInstallGuide_files/9zDs.png"> </li></ul><li>单击地址栏右侧Proxy  SwitchySharp图标即可进行模式选择 </li><blockquote><img src="GoAgentInstallGuide_files/Nm76.png"> 
+</blockquote><ol><li>GoAgent模式  除匹配proxy.ini中sites的外，全部通过GAE </li><li>GoAgent PAAS模式   全部通过PAAS </li><li>GoAgent Socks5模式   全部通过Socks5 </li><li>自动切换模式 根据切换规则自动选择是否进行代理，自动选择使用何种代理 </li></ol><ul><li>遇到规则中没有的，可以使用扩展的“新建规则”按钮自行添加 </li></ul></ul></ol><li><h3><a name="Firefox配合_扩展"></a>Firefox配合FoxyProxy扩展<a href="#Firefox%E9%85%8D%E5%90%88_%E6%89%A9%E5%B1%95" class="section_anchor"></a></h3></li><ol><li>安装扩展<a href="https://addons.mozilla.org/zh-cn/firefox/addon/foxyproxy-standard/" rel="nofollow">https://addons.mozilla.org/zh-cn/firefox/addon/foxyproxy-standard/</a> </li><li>设置 </li><blockquote><img src="GoAgentInstallGuide_files/40mN.png"> 
+</blockquote><ul><li>右击foxyporxy图标即可选择代理模式 </li></ul><blockquote><img src="GoAgentInstallGuide_files/qnSy.png"> 
+</blockquote></ol><li><h3><a name="Firefox配合_扩展"></a>Firefox配合AutoProxy扩展<a href="#Firefox%E9%85%8D%E5%90%88_%E6%89%A9%E5%B1%95" class="section_anchor"></a></h3></li><ol><li>安装扩展<a href="https://addons.mozilla.org/zh-cn/firefox/addon/autoproxy/" rel="nofollow">https://addons.mozilla.org/zh-cn/firefox/addon/autoproxy/</a> </li><li>设置 </li><ol><li>添加代理服务器 </li><blockquote><img src="GoAgentInstallGuide_files/KtKw.png"><img src="GoAgentInstallGuide_files/Ra6Q.png"><img src="GoAgentInstallGuide_files/aNN3.png"> 
+</blockquote><li>添加规则订阅 </li><blockquote><img src="GoAgentInstallGuide_files/5Ucu.png"><img src="GoAgentInstallGuide_files/p3Yu.png"> 
+</blockquote><li>选择自己需要的模式 </li><blockquote><img src="GoAgentInstallGuide_files/IsGw.png"> 
+</blockquote><ol><li>自动模式   根据规则自行选择是否使用代理 </li><li>全局模式   全部使用代理 </li><li>禁用代理   全部不使用代理 </li></ol></ol><li>或者直接使用已安装好autoproxy的Firefox便携版本：<a href="https://code.google.com/p/wwqgtxx-goagent/downloads/detail?name=FirefoxPortable.7z&amp;can=2&amp;q=" rel="nofollow">下载</a> </li></ol></ol><p>﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎ </p><h2><a name="goagent适用环境"></a>goagent适用环境<a href="#goagent%E9%80%82%E7%94%A8%E7%8E%AF%E5%A2%83" class="section_anchor"></a></h2><ul><li>适用：浏览器，支持http代理的下载软件等 </li><li>不适用：游戏客户端等需要稳定网络的程序，QQ，tor（验证证书）。待添加。。。 </li></ul><h2><a name="关于软件更新"></a>关于软件更新<a href="#%E5%85%B3%E4%BA%8E%E8%BD%AF%E4%BB%B6%E6%9B%B4%E6%96%B0" class="section_anchor"></a></h2><ul><li>更新历史中带有[是]则需要重新上传，否则不用重新上传。注意：是否需要重新上传是相对于前一版的，若你之前版本与当前版本之间某一版或多版带有[是]仍然需要重新上传。 </li><li>goagent每一版下载的都是全部文件，你可以选择覆盖原文件或者将新版放另一个文件夹，旧版你可以选择留存或者删除，修改新版proxy.ini中相关设置即可运行。如果旧版添加了开机启动，需要将旧开机启动删除。如果旧版已经在运行，需先将旧版关闭。 </li><li>如
+果之前版本没有ssl错误，使用新版出现ssl错误可以把原来的ca.cer、ca.key和certs文件夹内的文件覆盖当前的这些文件。或者将
+ca.cer、ca.key和certs文件夹内的文件全部删除，同时删除浏览器中所有goagent 
+ca的证书，再重启goagent，会生成新证书，再导入新证书即可。浏览器证书中只能有一个goagent ca的证书。 </li></ul><p>﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
+ ﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊ </p><h1><a name="﹡﹡﹡请勿到本页提交软件使用问题﹡﹡﹡"></a>﹡﹡﹡请勿到本页提交软件使用问题﹡﹡﹡<a href="#%EF%B9%A1%EF%B9%A1%EF%B9%A1%E8%AF%B7%E5%8B%BF%E5%88%B0%E6%9C%AC%E9%A1%B5%E6%8F%90%E4%BA%A4%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%EF%B9%A1%EF%B9%A1%EF%B9%A1" class="section_anchor"></a></h1><ul><li>bug反馈等请到<a href="https://code.google.com/p/goagent/issues/list" rel="nofollow">issues</a>页提交 </li><li>可以在本页提出有关本wiki的建议等，请勿提交无关内容 </li></ul>
+ </div>
+ </div>
+ </td></tr><tr>
+</tr></tbody></table>
+ </div>
+
+
+ 
+ <div id="wikicommentcol">
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<div class="collapse">
+
+
+ 
+
+
+<div id="commentlist">
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/106318672876355852903/">greatest...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Thu Dec 13 18:30:21 2012">Dec 13, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>辛苦了！ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/101955777600469643564/">xuhen...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Thu Dec 13 22:02:12 2012">Dec 13, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>终于更新了，哈哈<span style="text-decoration: line-through">大神辛苦了 </span></p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">i...@sdvegeta.com</span>,
+ 
+ </span>
+ <span class="date" title="Thu Dec 13 22:42:16 2012">Dec 13, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>放在这上面不是容易被墙吗 …… </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/104705206621563328381/">xueyatou...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Thu Dec 13 22:44:23 2012">Dec 13, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>这个很有用，虽然我已经熟悉了，但是对于新手，不必再去搜索教程了！目前的这个，是我个人所见过的，最完整且详细的教程 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/angel243239/">angel243239</a>,
+ 
+ </span>
+ <span class="date" title="Thu Dec 13 22:52:08 2012">Dec 13, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>迄今为止最详细的教程 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">Er1cs0nr...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Thu Dec 13 23:11:30 2012">Dec 13, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>按照以上的方法设置了，可以登陆不上facebook啊。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">Er1cs0nr...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Thu Dec 13 23:15:27 2012">Dec 13, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>YouTube<a href="https://code.google.com/p/goagent/w/edit/YouTube">?</a>也上不了，404了！不知道是协议问题还是怎么！ </p><p>大家的可以上吗？ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">xiaoZc...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Thu Dec 13 23:18:53 2012">Dec 13, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>请问能用这个代理玩游戏吗？ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">tinglian...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 14 00:09:06 2012">Dec 14, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>正在摸索当中啊。。。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">Nonessen...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 14 00:59:40 2012">Dec 14, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>非常感谢，这个教程很详细。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/100233315075214367918/">xilo...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 14 01:14:35 2012">Dec 14, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>前排混个练熟吧，辛苦了。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/112697362583471747540/">piana...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 14 01:15:23 2012">Dec 14, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>我想问一下多帐号怎么添加，并且upload呢？ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/110572696391857045296/">demon...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 14 01:52:35 2012">Dec 14, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>回楼上，在每个帐号用|符号隔开。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/116792232381105571981/">dailiha0...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 14 02:52:43 2012">Dec 14, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>大神辛苦了 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/117939652836020894520/">handl...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 14 05:52:53 2012">Dec 14, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>功德无量，造福天朝！ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">Krogoth...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 14 07:03:21 2012">Dec 14, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>收益，膜拜ing </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/115813172239896652760/">zyaw...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 14 07:46:54 2012">Dec 14, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>做善事 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/104687068430117110601/">yuqich...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 14 08:37:49 2012">Dec 14, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>YouTube<a href="https://code.google.com/p/goagent/w/edit/YouTube">?</a> 无法访问 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">foxdogw...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 15 08:39:00 2012">Dec 15, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>为了实现兼听则明。非常你们的努力！ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/109725642900725076304/">Jack.gz....@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 15 18:44:58 2012">Dec 15, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>没有wp7.5的使用教程?麻烦更新一下，谢谢 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/117653484582339882632/">popvi...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 15 21:10:39 2012">Dec 15, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>只是最近关于iPhone的更新速度貌似慢了一些，现在iOS下访问YouTube<a href="https://code.google.com/p/goagent/w/edit/YouTube">?</a>还是有问题哦... </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/101334773251353919063/">boboll...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Sat Dec 15 21:34:55 2012">Dec 15, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>很不错 感谢 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">cetus...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Sun Dec 16 18:07:29 2012">Dec 16, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>谢谢，很不错 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">2010ku...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Sun Dec 16 18:25:53 2012">Dec 16, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>不错不错 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/100564240914653743699/">science....@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Sun Dec 16 18:35:16 2012">Dec 16, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>这个教程对新手很有用啊，放在官方主页，赞一个<span style="text-decoration: line-through"></span> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/107973810744772637158/">Pluse1...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 17 00:24:29 2012">Dec 17, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>辛苦了，感谢 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/107724713607185394095/">annkim.5...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 17 00:33:39 2012">Dec 17, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>辛苦了！当初也是摸着石头过河 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">zh0...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 17 04:47:37 2012">Dec 17, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>谷歌好样的，真正伟大的互联网公司。世界因有了谷歌，而出色。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">chufan...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 17 08:16:37 2012">Dec 17, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>youtu 可以上，android可以用。。。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/105022350993068250293/">007le...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 17 09:08:09 2012">Dec 17, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>今天才知道IE有自动的。。。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">lllxclll...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 17 11:25:17 2012">Dec 17, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>正在尝试，非常感谢！ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/113458206942325702903/">zhangbq....@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 17 17:48:14 2012">Dec 17, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>Windows 7 环境下有点问题，比如无法登陆twitter， facebook 看不到图片。。。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">miaok...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 17 19:50:20 2012">Dec 17, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>最详细的教程，出错的解决方案写的好清楚 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/117830595330428923508/">qiuchang...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 17 20:23:35 2012">Dec 17, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>搭PHP的教程原先有的，现在找不到了、 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">Crys6900...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Tue Dec 18 01:10:28 2012">Dec 18, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>- -输入不了appid跟邮箱怎么破 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">19891003...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Tue Dec 18 19:41:42 2012">Dec 18, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>局域网地址无法更改 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">sukiands...@5d6d.cn</span>,
+ 
+ </span>
+ <span class="date" title="Wed Dec 19 17:57:54 2012">Dec 19, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>各种感谢~ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/106059123705249690301/">Qweiis...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Wed Dec 19 22:28:45 2012">Dec 19, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>十分感谢 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/101260612557263224674/">xuedongl...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Thu Dec 20 18:39:21 2012">Dec 20, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>教程详细，辛苦了。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/115550429911525950531/">zhiyinni...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Thu Dec 20 22:01:32 2012">Dec 20, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>good    </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/104199098905213853252/">wangshen...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 21 19:25:55 2012">Dec 21, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>感谢您的辛勤耕耘！新时代的楷模！ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">xcz1...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 21 22:57:48 2012">Dec 21, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>为什么我没设置就能用？？？？？ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">Tom7...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 24 00:44:41 2012">Dec 24, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>现在好用一些了，但是不是新版本的功劳，应归功于某wall放松的缘故！ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">sdktc...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Thu Dec 27 08:13:04 2012">Dec 27, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>好用啊，果然造福人类啊 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/102298814800643655371/">zhang...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Fri Dec 28 09:51:44 2012">Dec 28, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>请问导入chrome下导入证书CA.crt需要口令，这是什么口令啊 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/117249601841057842326/">superbre...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Mon Dec 31 03:53:13 2012">Dec 31, 2012</span>
+ <div>
+<div class="commentcontent">
+<p>好呀，总算有官方教程了。赞！！！！！！！！！！ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/daviseago/">daviseago</a>,
+ 
+ </span>
+ <span class="date" title="Thu Jan  3 03:14:33 2013">Jan 3, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>Add certificate in Opera:  Preferences - Advanced - Security - Manage
+ Certificates - Authorities - Import, then choose local/CA.crt. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/109207530452971597879/">ho...@outop.net</a>,
+ 
+ </span>
+ <span class="date" title="Fri Jan  4 19:03:10 2013">Jan 4, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>官方教程写得非常好 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">tanlaiq...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Mon Jan  7 02:05:51 2013">Jan 7, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>下载的goagent2.1.1版本为何不能够解压啊---------------- </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/111498941170955662959/">mcco...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Mon Jan  7 22:06:44 2013">Jan 7, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>网络无界限，高人在民间～！ 赞～！ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">20120612...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Mon Jan  7 22:56:52 2013">Jan 7, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>能不能說清楚一點啊？我是新手對我來說太難了。我還有很多朋友想番羽 呢 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/104921704809958290114/">leedu...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Tue Jan  8 03:22:31 2013">Jan 8, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>好，简单直白的使用教程...楼主辛苦 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">hudingc...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Tue Jan  8 04:00:26 2013">Jan 8, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>如此详细的官方教程，辛苦了！ GAE用很久了，没有她上网根本没意义。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">BCCFoot...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Thu Jan 10 02:33:23 2013">Jan 10, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>Thanks it help so much </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/108037846932819170270/">wzf1...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Thu Jan 10 22:59:23 2013">Jan 10, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>谢谢，非常详细。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/118149538033055470420/">luj...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Fri Jan 11 22:56:19 2013">Jan 11, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>异常详细，强烈支持 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/105339729140473624205/">zhuhongy...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Sun Jan 13 05:11:05 2013">Jan 13, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>500 错误 咋解决 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/112582424230515902270/">chenyy2...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Sun Jan 13 21:36:30 2013">Jan 13, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>各大浏览器设置都有，非常详细，顶。。。非常感谢。。。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/106950617892921226642/">x92l07...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Mon Jan 14 02:58:32 2013">Jan 14, 2013</span>
+ <div>
+<div class="commentcontent">
+<p>顶啊 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/103595378492754746783/">hojir...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Tue Jan 22 01:00:02 2013">Jan 22 (5 days ago)</span>
+ <div>
+<div class="commentcontent">
+<p>非常感谢，辛苦了 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/110815052222351206800/">jxzhlstu...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Tue Jan 22 02:36:59 2013">Jan 22 (5 days ago)</span>
+ <div>
+<div class="commentcontent">
+<p>终于解决了困扰我半年的问题了，youtube终于能上了，谢谢分享！ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">zhanghao...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Tue Jan 22 04:53:57 2013">Jan 22 (5 days ago)</span>
+ <div>
+<div class="commentcontent">
+<p>这页好像被墙了。。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/115442624969002818927/">scorpio....@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Tue Jan 22 06:56:10 2013">Jan 22 (5 days ago)</span>
+ <div>
+<div class="commentcontent">
+<p>再怎么封锁也锁不住思想，感谢google大神 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/103129386185902534012/">lxok...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Tue Jan 22 23:19:50 2013">Jan 22 (4 days ago)</span>
+ <div>
+<div class="commentcontent">
+<p>非常感谢，我原来的那个vpn可以暂时不用了 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/103129386185902534012/">lxok...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Wed Jan 23 00:00:37 2013">Jan 23 (4 days ago)</span>
+ <div>
+<div class="commentcontent">
+<p>在最后更新不了列表的时候别忘了选用goagent模式 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/115150243329617873060/">lucask...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Wed Jan 23 06:04:16 2013">Jan 23 (4 days ago)</span>
+ <div>
+<div class="commentcontent">
+<p>超级好用，谢谢编写教程。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">excel.em...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Wed Jan 23 06:51:44 2013">Jan 23 (4 days ago)</span>
+ <div>
+<div class="commentcontent">
+<p>谢谢分享！很强大！但是上facebook的时候说证书有错误。。。 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/102141230398819709483/">wuxinche...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Wed Jan 23 18:31:04 2013">Jan 23 (3 days ago)</span>
+ <div>
+<div class="commentcontent">
+<p>很好 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ 
+ <span class="userlink">mtbabo...@gmail.com</span>,
+ 
+ </span>
+ <span class="date" title="Thu Jan 24 14:32:53 2013">Jan 24 (3 days ago)</span>
+ <div>
+<div class="commentcontent">
+<p>wo shi liuxuesheng ,wo kan bu dong, you ren keyi bang wo ma? meiyou yingyu de ma? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ 
+
+ <a class="userlink" href="https://code.google.com/u/107636194892107560642/">xiaopan3...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Sun Jan 27 01:18:20 2013">Yesterday (17 hours ago)</span>
+ <div>
+<div class="commentcontent">
+<p>给力！辛苦了！ </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+</div>
+</div>
+
+ 
+
+
+ <script type="text/javascript">
+ function delComment(sequence_num, create_time, delete_mode) {
+ var f = document.forms["delcom"];
+ f.sequence_num.value = sequence_num;
+ f.create_time.value = create_time;
+ f.mode.value = delete_mode;
+ f.submit();
+ return false;
+ }
+ </script>
+
+
+ </div>
+ 
+ 
+ 
+ 
+ 
+ <div id="commentform">
+ <form action="../w/detail.do" method="post">
+ <table>
+ <tbody><tr><td class="vt">
+ <input name="pagename" value="InstallGuide" type="hidden">
+ <input name="token" value="b8_8FyoKr94io7gjr26igE7pGMg:1359340077675" type="hidden">
+ <div class="graytext" style="float: right;">
+ Hint: You can use <a href="http://code.google.com/p/support/wiki/WikiSyntax">Wiki Syntax.</a>
+ </div>
+ <div>Enter a comment:</div>
+ <textarea name="content" rows="6" cols="100"></textarea><br><br>
+ <input name="submit" value="Submit" type="submit">
+ </td>
+ </tr></tbody></table>
+ </form>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ <form name="delcom" action="../w/delComment.do" method="POST">
+ <input name="sequence_num" value="" type="hidden">
+ <input name="create_time" value="" type="hidden">
+ <input name="mode" value="" type="hidden">
+ <input name="pagename" value="InstallGuide" type="hidden">
+ <input name="token" value="b8_8FyoKr94io7gjr26igE7pGMg:1359340077675" type="hidden">
+ </form>
+
+
+ <script src="GoAgentInstallGuide_files/prettify.js"></script>
+ <script type="text/javascript">
+ prettyPrint();
+ </script>
+
+<script type="text/javascript" src="GoAgentInstallGuide_files/dit_scripts.js"></script>
+
+
+
+  
+ 
+ 
+ <script type="text/javascript" src="GoAgentInstallGuide_files/ph_core.js"></script>
+ 
+ <script type="text/javascript" src="GoAgentInstallGuide_files/ph_dwiki.js"></script>
+ 
+ 
+ 
+ 
+</div> 
+
+<div id="footer" dir="ltr">
+ <div class="text">
+ <a href="https://code.google.com/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="https://code.google.com/p/support/">Project Hosting Help</a>
+ </div>
+</div>
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+
+ 
+ 
+
+
+ 
+ 
+
+
+
+<div style="position: absolute; display: none; top: 19px; left: 1131px;" id="menuDiv-projects-dropdown" class="menuDiv instance0"><div style="display: none;" class="menuCategory default"></div><b style="display: block;" class="categoryTitle projects">Projects</b><div class="menuCategory projects first"><a href="https://code.google.com/p/goagent-backup/" style="display: block;" class="menuItem">goagent-backup</a><a href="https://code.google.com/p/goagent-next/" style="display: block;" class="menuItem">goagent-next</a><a href="https://code.google.com/p/wallproxy/" style="display: block;" class="menuItem">wallproxy</a><a href="https://code.google.com/p/wallproxy-backup/" style="display: block;" class="menuItem">wallproxy-backup</a><a href="https://code.google.com/p/wallproxy-plus/" style="display: block;" class="menuItem">wallproxy-plus</a><a href="https://code.google.com/p/wallproxy-update/" style="display: block;" class="menuItem">wallproxy-update</a><a href="https://code.google.com/p/wwqgtxx/" style="display: block;" class="menuItem">wwqgtxx</a><a href="https://code.google.com/p/wwqgtxx-goagent/" style="display: block;" class="menuItem">wwqgtxx-goagent</a></div><b style="display: block;" class="categoryTitle starred_projects">Starred projects</b><div class="menuCategory starred_projects"><a href="https://code.google.com/p/breakwall/" style="display: block;" class="menuItem">breakwall</a><a href="https://code.google.com/p/excelvba-googlehost/" style="display: block;" class="menuItem">excelvba-googlehost</a><a href="https://code.google.com/p/gaeproxy/" style="display: block;" class="menuItem">gaeproxy</a><a href="https://code.google.com/p/gfangqiang/" style="display: block;" class="menuItem">gfangqiang</a><a href="https://code.google.com/p/gfangqiang-update/" style="display: block;" class="menuItem">gfangqiang-update</a><a href="https://code.google.com/p/gfanqiang/" style="display: block;" class="menuItem">gfanqiang</a><a href="https://code.google.com/p/gfanqiang-ie/" style="display: block;" class="menuItem">gfanqiang-ie</a><a href="https://code.google.com/p/goagent/" style="display: block;" class="menuItem">goagent</a><a href="https://code.google.com/p/goagent-ini/" style="display: block;" class="menuItem">goagent-ini</a><a href="https://code.google.com/p/snova/" style="display: block;" class="menuItem">snova</a><a href="https://code.google.com/p/the-new-autoproxy/" style="display: block;" class="menuItem">the-new-autoproxy</a><a href="https://code.google.com/p/wallproxy/" style="display: block;" class="menuItem">wallproxy</a><a href="https://code.google.com/p/wallproxy-plus/" style="display: block;" class="menuItem">wallproxy-plus</a><a href="https://code.google.com/p/wwqgtxx-goagent/" style="display: block;" class="menuItem">wwqgtxx-goagent</a></div><div class="menuCategory controls"><hr class="menuSeparator"><a href="https://code.google.com/hosting/" style="display: block;" class="menuItem">Find open source projects...</a><a href="https://code.google.com/hosting/createProject" style="display: block;" class="menuItem">Create a project...</a></div></div><div style="position: absolute; display: none; top: 19px; left: 968px;" id="menuDiv-multilogin-dropdown" class="menuDiv instance1"><div class="menuCategory default first"><span style="display: block;" class="menuText"><b>wwqgtxx@gmail.com</b></span><a href="https://code.google.com/p/goagent/wiki/InstallGuide?authuser=1" style="display: block;" class="menuItem">lovephuslu@gmail.com</a></div><div class="menuCategory controls"><hr class="menuSeparator"><a href="http://www.google.com/accounts/AddSession?service=code&amp;continue=https%3A%2F%2Fcode.google.com%2Fp%2Fgoagent%2Fwiki%2FInstallGuide" style="display: block;" class="menuItem"><nobr>Sign in with another account...</nobr></a></div></div></body></html>
