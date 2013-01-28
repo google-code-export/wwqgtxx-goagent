@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding:utf-8
-# by:wwqgtxx
+# by:wwqgtxx,phus
 
 import sys
 import os
@@ -20,84 +20,128 @@ except ImportError:
 
 import ssl
 import socket
+import ConfigParser
 
-ips = []
+__config__   = 'proxy.ini'
+__file__     = 'check_google_ip.py'
+__filename__ =  'ip.txt'
 
-def check_ip(ip):
-    try:
-        with gevent.timeout.Timeout(5):
-            sock = socket.create_connection((ip, 443))
-            ssl_sock = ssl.wrap_socket(sock)
-            peer_cert = ssl_sock.getpeercert(True)
-            if '.google.com' in peer_cert:
-                print ip
-                ips.append(ip)
-                #print ips
-    except gevent.timeout.Timeout as e:
-        pass
-    except Exception as e:
-        pass
 
-def getfile(filename):
-    global __file__
-    __file__ = os.path.abspath(__file__)
-    if os.path.islink(__file__):
-        __file__ = getattr(os, 'readlink', lambda x:x)(__file__)
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(os.path.dirname(__file__), filename)
 
-def ifhasfile(filename):
-    if os.path.isfile(getfile(filename)):
-        os.remove(getfile(filename)) 
+class Common(object):
+
+    def __init__(self):
+        """load config from proxy.ini"""
+        ConfigParser.RawConfigParser.OPTCRE = re.compile(r'(?P<option>[^=\s][^=]*)\s*(?P<vi>[=])\s*(?P<value>.*)$')
+        self.CONFIG = ConfigParser.ConfigParser()
+        self.CONFIG.read(os.path.join(os.path.dirname(__file__), __config__))
+        self.IPS = []
+
+
+    def getfile(self,filename):
+        global __file__
+        __file__ = os.path.abspath(__file__)
+        if os.path.islink(__file__):
+            __file__ = getattr(os, 'readlink', lambda x:x)(__file__)
+        os.chdir(os.path.dirname(os.path.abspath(__file__)))
+        return os.path.join(os.path.dirname(__file__), filename)
+
+    def ifhasfile(self):
+        if os.path.isfile(self.getfile(__filename__)):
+            os.remove(self.getfile(__filename__)) 
 		
-def write(filename,str_ips):
-    f = open(getfile(filename),'a+') 
-    print str_ips
-    f.write(str_ips)
-    f.close()
+    def write(self,str_ips):
+        f = open(self.getfile(__filename__),'a+') 
+        print str_ips
+        f.write(str_ips)
+        f.close()
 
-def getln():
-    if os.name == 'nt':
-        return '\r\n'
-    else:
-        return '\n'
-
-def writeln(filename):
-    write(filename,getln())
-	
-def writeline(filename):
-    writeln(filename)
-    write(filename,'----------------------------------------------------')
-    writeln(filename)
-
-def run(filename,ip_head,ip_start,ip_end):
-    for a in xrange(ip_start,(ip_end+1)):
-        global ips
-        str_a = '%d' % a
-        greenlets = [gevent.spawn(check_ip, ip_head+str_a+'.%d' % i)for i in xrange(1, 256)]
-        gevent.joinall(greenlets)
-        str_ips = ''
-        print getln()
-        if ips!=[]:
-            for item in ips:
-                str_ips = str_ips+item+'|'
-            write(filename,str_ips)
-            ips = []
+    def getln(self):
+        if os.name == 'nt':
+            return '\r\n'
         else:
-            print ip_head+str_a+'.* is no useable ip.'
-        print getln()
+            return '\n'
+
+    def writeln(self):
+        self.write(self.getln())
+	
+    def writeline(self):
+        self.writeln()
+        self.write('----------------------------------------------------')
+        self.writeln()
+	
+    def writeip(self,ip):
+        self.write(ip)
+        common.IPS.append(ip)
+
+    def writeconfig(self,section, option,):
+        str_ips = ''
+        if self.IPS!=[]:
+            for item in self.IPS:
+                str_ips = str_ips+item
+            print str_ips
+            common.CONFIG.set(section,option,str_ips)
+            f = open(self.getfile(__config__),'w') 
+            self.CONFIG.write(f)
+            f.close()
+            self.IPS = []
+		
+		
+common = Common()
+
+
+class Check_ip(object):
+    ips = []
+    def check_ip(self,ip):
+        try:
+            with gevent.timeout.Timeout(5):
+                sock = socket.create_connection((ip, 443))
+                ssl_sock = ssl.wrap_socket(sock)
+                peer_cert = ssl_sock.getpeercert(True)
+                if '.google.com' in peer_cert:
+                    print ip
+                    self.ips.append(ip)
+                    #print self.ips
+        except gevent.timeout.Timeout as e:
+            pass
+        except Exception as e:
+            pass
+    def run(self,filename,ip_head,ip_start,ip_end):
+        for a in xrange(ip_start,(ip_end+1)):
+            global ips
+            str_a = '%d' % a
+            greenlets = [gevent.spawn(self.check_ip, ip_head+str_a+'.%d' % i)for i in xrange(1, 256)]
+            gevent.joinall(greenlets)
+            str_ips = ''
+            print common.getln()
+            if self.ips!=[]:
+                for item in self.ips:
+                    str_ips = str_ips+item+'|'
+                common.writeip(str_ips)
+                self.ips = []
+            else:
+                print ip_head+str_a+'.* is no useable ip.'
+            print common.getln()
+			
+check_ip = Check_ip()
+
 
 def main():
-    filename = 'ip.txt'
-    ifhasfile(filename)
-    writeline(filename)
-    write(filename,'Google Cn Ip:')
-    writeline(filename)
-    run(filename,'203.208.',36,37)
-    writeline(filename)
-    write(filename,'Google Hk Ip:')
-    writeline(filename)
-    run(filename,'74.125.',0,255)
+    print '------------------------------------------------------ \n Google Cn Ip Getter \n by wwqgtxx \n------------------------------------------------------ \n '
+    need_google_hk = False
+    common.ifhasfile()
+    common.writeline()
+    common.write('Google Cn Ip:')
+    common.writeline()
+    check_ip.run(__filename__,'203.208.',36,37)
+    check_ip.run(__filename__,'203.208.',46,47)
+    common.writeconfig('google_cn','hosts')
+    if need_google_hk:
+        common.writeline()
+        common.write('Google Hk Ip:')
+        common.writeline()
+        check_ip.run(__filename__,'74.125.',0,255)
+        common.writeconfig('google_hk','hosts')
 
 if __name__ == '__main__':
     main()
