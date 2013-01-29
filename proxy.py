@@ -1694,6 +1694,7 @@ def pre_start():
 
 def main():
     global __file__
+    global common
     __file__ = os.path.abspath(__file__)
     if os.path.islink(__file__):
         __file__ = getattr(os, 'readlink', lambda x:x)(__file__)
@@ -1703,6 +1704,7 @@ def main():
     pre_start()
     import check_google_ip
     check_google_ip.main()
+    common = Common()
     sys.stdout.write(common.info())
 
     #logging.info('Enable aggressive create_ssl_connection to connect google_hk')

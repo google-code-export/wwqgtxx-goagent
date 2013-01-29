@@ -24,7 +24,7 @@ import ConfigParser
 
 __config__   = 'proxy.ini'
 __file__     = 'check_google_ip.py'
-__filename__ =  'ip.txt'
+__filename__ = 'ip.txt'
 
 
 
@@ -74,17 +74,23 @@ class Common(object):
         self.write(ip)
         common.IPS.append(ip)
 
-    def writeconfig(self,section, option,):
+    def writeips(self,section, option):
         str_ips = ''
         if self.IPS!=[]:
             for item in self.IPS:
                 str_ips = str_ips+item
             print str_ips
-            common.CONFIG.set(section,option,str_ips)
-            f = open(self.getfile(__config__),'w') 
-            self.CONFIG.write(f)
-            f.close()
+            self.writeconfig(section, option,str_ips)
             self.IPS = []
+
+    def writeconfig(self,section, option,str):
+        self.CONFIG.set(section,option,str)
+        f = open(self.getfile(__config__),'w') 
+        self.CONFIG.write(f)
+        f.close()
+    
+    def getconfig(self,section, option):
+        return self.CONFIG.get(section, option)
 		
 		
 common = Common()
@@ -128,11 +134,27 @@ check_ip = Check_ip()
 
 def main():
     print '------------------------------------------------------ \n Google Cn Ip Getter \n by wwqgtxx \n------------------------------------------------------ \n '
+    need_google_hk = False
     common.ifhasfile()
-    check_ip.run(__filename__,'203.208.',36,37)
+    common.writeline()
+    common.write('Google Cn Ip:')
+    common.writeline()
+    common.writeconfig('google_cn','hosts','')
     check_ip.run(__filename__,'203.208.',46,47)
-    common.writeconfig('google_cn','hosts')
-
+    common.writeips('google_cn','hosts')
+    if common.getconfig('google_cn','hosts') == '' :
+        print 'Can\'t Find Google Cn Ip,Change To Google_hk'
+        common.writeconfig('gae','profile','google_hk')
+    else :
+        common.writeconfig('gae','profile','google_cn')
+        print 'Find Google Cn Ip Successful,Change To Google_cn'
+    if need_google_hk:
+        common.writeline()
+        common.write('Google Hk Ip:')
+        common.writeline()
+        check_ip.run(__filename__,'74.125.',0,255)
+        common.writeconfig('google_hk','hosts')
+    print '------------------------------------------------------ \n Google Cn Ip Getter \n by wwqgtxx \n------------------------------------------------------ \n '
 
 if __name__ == '__main__':
     main()
